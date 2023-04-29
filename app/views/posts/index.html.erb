@@ -1,0 +1,43 @@
+<div class="container mt-[120px] px-4">
+<div class="flex justify-between">
+    <div class="mb-6">
+        <h1 class="text-xl font-medium">My Posts</h1>
+    </div>
+    <div>
+        <%= link_to "Add new post", new_post_path, class: "text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"%>
+    </div>
+</div>
+<div>
+<!--begin table header-->
+<div class="flex flex-nowrap border-b border-gray-200 font-medium">
+    <div class="w-[60px] p-4 shrink-0">ID</div>
+    <div class="w-[calc(30%-70px)] p-4">Title</div>
+    <div class="w-[calc(70%-70px)] p-4">Description</div>
+    <div class="w-[80px] p-4 text-right shrink-0">Action</div>
+</div>
+<!--end table header-->
+<!--begin table row-->
+<% @posts.each do |post| %>    
+    <div class="flex flex-nowrap border-b border-gray-200">
+        <div class="w-[60px] p-4 shrink-0"><%= link_to post_path(post) do%> <%= post.id %><% end %></div>
+        <div class="w-[calc(30%-70px)] p-4"><%= link_to post_path(post) do%> <%= post.title %> <% end %></div>
+        <div class="w-[calc(70%-70px)] p-4"><%= link_to post_path(post) do%> <%= truncate(post.content, length: 150, omission: '...') %><% end %></div>
+        <div class="w-[80px] p-4 text-right shrink-0">
+        <%= link_to edit_post_path(post), class: "inline-block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm p-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" do%>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+            <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
+            <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
+                </svg>
+        <%end%>            
+        </div>
+    </div>   
+<% end %>
+<!--end table row-->
+<!--begin table footer-->
+<div class="flex justify-end p-4">
+    <div class="font-medium">Total Posts: <%= @posts_count %></div>
+</div>
+<!--end table footer-->
+
+</div>
+</div>
