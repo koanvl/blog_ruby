@@ -38,11 +38,13 @@
   </head>
 
   <body>
-  <%= render "layouts/header" %>
-  <div class="mt-[60px]">
   <p class="notice"><%= notice %></p> 
   <p class="alert"><%= alert %></p> 
+  <%= render "layouts/header" %>
+  <div class="my-[60px]">
+  
     <%= yield %>
   </div>
+   <%= render "layouts/footer" %>
   </body>
 </html>

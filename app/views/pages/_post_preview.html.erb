@@ -1,4 +1,5 @@
 
+
 <%= link_to post_path(post), class: "w-[calc(25%-16px)] rounded-md overflow-hidden shadow-md" do%>
   <div class="w-full pb-[60%] relative overflow-hidden bg-gray-100">
       <%if post.image.attached? %>      
@@ -13,8 +14,10 @@
       <% end %>
   </div>
   <div class="p-4">
-    <div class="font-medium mb-2"><%= post.title%></div>
-    <div class="h-[48px] overflow-hidden text-sm"><%= truncate(post.content, length: 60, omission: '...') %></div>
+    <div class="font-medium mb-2 h-[48px] overflow-hidden"><%= truncate(post.title, length: 60, omission: '...')%></div>
+    <div class="h-[72px] overflow-hidden text-sm"><%= truncate(post.content, length: 100, omission: '...') %></div>
     <div class="text-xs font-medium"><%= post.created_at.strftime("%d %B %Y") %></div>
+    <div class="text-xs font-medium"><%= post.user.name %></div>
   </div> 
+  
 <% end %>   

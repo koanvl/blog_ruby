@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   def index
-    @posts = Post.all
-    @posts_count = Post.count
+    @posts = current_user.posts.all
+    @posts_count = current_user.posts.count
   end
 
   def show
@@ -12,11 +12,11 @@ class PostsController < ApplicationController
 
   def new
     
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post
@@ -38,6 +38,14 @@ class PostsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to posts_path, status: :see_other
+  end
+ 
 
 
   private
