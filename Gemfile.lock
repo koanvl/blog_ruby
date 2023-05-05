@@ -84,6 +84,9 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    cypress-rails (0.5.5)
+      puma (>= 3.8.0)
+      railties (>= 5.2.0)
     date (3.3.3)
     debug (1.7.2)
       irb (>= 1.5.0)
@@ -235,6 +238,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  cypress-rails
   debug
   devise
   faker

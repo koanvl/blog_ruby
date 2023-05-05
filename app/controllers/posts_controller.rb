@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  
   def index
     @posts = current_user.posts.all
     @posts_count = current_user.posts.count
@@ -7,6 +8,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    
+    @latest_posts = Post.where.not(id: @post.id).order(created_at: :desc).limit(3)
+
 
   end
 

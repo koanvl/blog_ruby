@@ -16,8 +16,8 @@
   <div class="p-4">
     <div class="font-medium mb-2 h-[48px] overflow-hidden"><%= truncate(post.title, length: 60, omission: '...')%></div>
     <div class="h-[72px] overflow-hidden text-sm"><%= truncate(post.content, length: 100, omission: '...') %></div>
-    <div class="text-xs font-medium"><%= post.created_at.strftime("%d %B %Y") %></div>
-    <div class="text-xs font-medium"><%= post.user.name %></div>
+    <div class="text-xs text-gray-400"><span class="font-medium">Date: </span><%= post.created_at.strftime("%d %B %Y") %></div>
+    <div class="text-xs text-gray-400"><span class="font-medium">Author: </span><%= post.user.name %></div>
   </div> 
   
 <% end %>   
